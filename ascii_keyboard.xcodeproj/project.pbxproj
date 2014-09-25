@@ -14,6 +14,9 @@
 		6340765C19D3B6C700D2438B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6340765B19D3B6C700D2438B /* Images.xcassets */; };
 		6340765F19D3B6C800D2438B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6340765D19D3B6C800D2438B /* LaunchScreen.xib */; };
 		6340766B19D3B6C800D2438B /* ascii_keyboardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6340766A19D3B6C800D2438B /* ascii_keyboardTests.m */; };
+		6340767E19D3B70100D2438B /* KeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6340767D19D3B70100D2438B /* KeyboardViewController.m */; };
+		6340768119D3B70100D2438B /* image2ascii.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6340767819D3B70100D2438B /* image2ascii.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6340768E19D3D97D00D2438B /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6340768D19D3D97D00D2438B /* KeyboardView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,7 +27,35 @@
 			remoteGlobalIDString = 6340764A19D3B6C700D2438B;
 			remoteInfo = ascii_keyboard;
 		};
+		6340767F19D3B70100D2438B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6340764319D3B6C700D2438B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6340767719D3B70100D2438B;
+			remoteInfo = image2ascii;
+		};
+		6340768219D3B70100D2438B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6340764319D3B6C700D2438B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6340767719D3B70100D2438B;
+			remoteInfo = image2ascii;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6340768719D3B70100D2438B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6340768119D3B70100D2438B /* image2ascii.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6340764B19D3B6C700D2438B /* ascii_keyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ascii_keyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +71,11 @@
 		6340766419D3B6C800D2438B /* ascii_keyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ascii_keyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6340766919D3B6C800D2438B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6340766A19D3B6C800D2438B /* ascii_keyboardTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ascii_keyboardTests.m; sourceTree = "<group>"; };
+		6340767819D3B70100D2438B /* image2ascii.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = image2ascii.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6340767B19D3B70100D2438B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6340767C19D3B70100D2438B /* KeyboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardViewController.h; sourceTree = "<group>"; };
+		6340767D19D3B70100D2438B /* KeyboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyboardViewController.m; sourceTree = "<group>"; };
+		6340768D19D3D97D00D2438B /* KeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +93,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6340767519D3B70100D2438B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -65,6 +108,7 @@
 			children = (
 				6340764D19D3B6C700D2438B /* ascii_keyboard */,
 				6340766719D3B6C800D2438B /* ascii_keyboardTests */,
+				6340767919D3B70100D2438B /* image2ascii */,
 				6340764C19D3B6C700D2438B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,6 +118,7 @@
 			children = (
 				6340764B19D3B6C700D2438B /* ascii_keyboard.app */,
 				6340766419D3B6C800D2438B /* ascii_keyboardTests.xctest */,
+				6340767819D3B70100D2438B /* image2ascii.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,6 +164,25 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		6340767919D3B70100D2438B /* image2ascii */ = {
+			isa = PBXGroup;
+			children = (
+				6340767C19D3B70100D2438B /* KeyboardViewController.h */,
+				6340767D19D3B70100D2438B /* KeyboardViewController.m */,
+				6340767A19D3B70100D2438B /* Supporting Files */,
+				6340768D19D3D97D00D2438B /* KeyboardView.xib */,
+			);
+			path = image2ascii;
+			sourceTree = "<group>";
+		};
+		6340767A19D3B70100D2438B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6340767B19D3B70100D2438B /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,10 +193,13 @@
 				6340764719D3B6C700D2438B /* Sources */,
 				6340764819D3B6C700D2438B /* Frameworks */,
 				6340764919D3B6C700D2438B /* Resources */,
+				6340768719D3B70100D2438B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6340768019D3B70100D2438B /* PBXTargetDependency */,
+				6340768319D3B70100D2438B /* PBXTargetDependency */,
 			);
 			name = ascii_keyboard;
 			productName = ascii_keyboard;
@@ -157,6 +224,23 @@
 			productReference = 6340766419D3B6C800D2438B /* ascii_keyboardTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		6340767719D3B70100D2438B /* image2ascii */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6340768419D3B70100D2438B /* Build configuration list for PBXNativeTarget "image2ascii" */;
+			buildPhases = (
+				6340767419D3B70100D2438B /* Sources */,
+				6340767519D3B70100D2438B /* Frameworks */,
+				6340767619D3B70100D2438B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = image2ascii;
+			productName = image2ascii;
+			productReference = 6340767819D3B70100D2438B /* image2ascii.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -172,6 +256,9 @@
 					6340766319D3B6C800D2438B = {
 						CreatedOnToolsVersion = 6.0;
 						TestTargetID = 6340764A19D3B6C700D2438B;
+					};
+					6340767719D3B70100D2438B = {
+						CreatedOnToolsVersion = 6.0;
 					};
 				};
 			};
@@ -190,6 +277,7 @@
 			targets = (
 				6340764A19D3B6C700D2438B /* ascii_keyboard */,
 				6340766319D3B6C800D2438B /* ascii_keyboardTests */,
+				6340767719D3B70100D2438B /* image2ascii */,
 			);
 		};
 /* End PBXProject section */
@@ -209,6 +297,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6340767619D3B70100D2438B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6340768E19D3D97D00D2438B /* KeyboardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +329,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6340767419D3B70100D2438B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6340767E19D3B70100D2438B /* KeyboardViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -240,6 +344,16 @@
 			isa = PBXTargetDependency;
 			target = 6340764A19D3B6C700D2438B /* ascii_keyboard */;
 			targetProxy = 6340766519D3B6C800D2438B /* PBXContainerItemProxy */;
+		};
+		6340768019D3B70100D2438B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6340767719D3B70100D2438B /* image2ascii */;
+			targetProxy = 6340767F19D3B70100D2438B /* PBXContainerItemProxy */;
+		};
+		6340768319D3B70100D2438B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6340767719D3B70100D2438B /* image2ascii */;
+			targetProxy = 6340768219D3B70100D2438B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -393,6 +507,30 @@
 			};
 			name = Release;
 		};
+		6340768519D3B70100D2438B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = image2ascii/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6340768619D3B70100D2438B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = image2ascii/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -418,6 +556,14 @@
 			buildConfigurations = (
 				6340767219D3B6C800D2438B /* Debug */,
 				6340767319D3B6C800D2438B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		6340768419D3B70100D2438B /* Build configuration list for PBXNativeTarget "image2ascii" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6340768519D3B70100D2438B /* Debug */,
+				6340768619D3B70100D2438B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
