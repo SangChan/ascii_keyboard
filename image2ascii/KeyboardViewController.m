@@ -132,17 +132,10 @@ static NSString * characterMap = @" .,;_-`*";
     // タッチした座標を取得します。
     CGPoint currentPoint = [[touches anyObject] locationInView:self.canvas];
     
-    // ボタン上の場合は処理を終了します。
-    if (CGRectContainsPoint(self.undoBtn.frame, currentPoint)
-        || CGRectContainsPoint(self.redoBtn.frame, currentPoint)
-        || CGRectContainsPoint(self.clearBtn.frame, currentPoint)){
-        return;
-    }
-    
     // パスを初期化します。
     bezierPath = [UIBezierPath bezierPath];
     bezierPath.lineCapStyle = kCGLineCapRound;
-    bezierPath.lineWidth = 4.0;
+    bezierPath.lineWidth = 5.0;
     [bezierPath moveToPoint:currentPoint];
     firstMovedFlg = NO;
     
@@ -239,20 +232,28 @@ static NSString * characterMap = @" .,;_-`*";
 
 - (void)buttonPressed:(id)sender
 {
-    UIImage *dummyImage_ = [self.canvas image];
-    NSInteger imgWidth = dummyImage_.size.width;
-    NSInteger imgHeight = dummyImage_.size.height;
+    UIImage *dummyImage = [self imageWithImage:self.canvas.image scaledToSize:CGSizeMake(32, 32)];
+    NSInteger imgWidth = dummyImage.size.width;
+    NSInteger imgHeight = dummyImage.size.height;
     
     NSMutableString * resultString = [[NSMutableString alloc] initWithCapacity:imgWidth * imgHeight];
     
     for ( int i = 0; i < imgHeight; i++) {
-        NSString * line = [self getRGBAsFromImage:dummyImage_ atX:0 andY:i count:imgWidth];
+        NSString * line = [self getRGBAsFromImage:dummyImage atX:0 andY:i count:imgWidth];
         [resultString appendString:line];
         [resultString appendString:@"\n"];
         
     }
     NSLog(@"\n%@",resultString);
     [self.textDocumentProxy insertText:resultString];
+}
+
+- (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 @end
