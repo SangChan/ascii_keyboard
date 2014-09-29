@@ -55,17 +55,6 @@
                 break;
         }
     }
-    
-    CGFloat _expandedHeight = 500;
-    NSLayoutConstraint *_heightConstraint =
-    [NSLayoutConstraint constraintWithItem: self.view
-                                 attribute: NSLayoutAttributeHeight
-                                 relatedBy: NSLayoutRelationEqual
-                                    toItem: nil
-                                 attribute: NSLayoutAttributeNotAnAttribute
-                                multiplier: 0.0
-                                  constant: _expandedHeight];
-    [self.view addConstraint: _heightConstraint];
 }
 
 
