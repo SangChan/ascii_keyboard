@@ -55,6 +55,17 @@
                 break;
         }
     }
+    
+    CGFloat _expandedHeight = 500;
+    NSLayoutConstraint *_heightConstraint =
+    [NSLayoutConstraint constraintWithItem: self.view
+                                 attribute: NSLayoutAttributeHeight
+                                 relatedBy: NSLayoutRelationEqual
+                                    toItem: nil
+                                 attribute: NSLayoutAttributeNotAnAttribute
+                                multiplier: 0.0
+                                  constant: _expandedHeight];
+    [self.view addConstraint: _heightConstraint];
 }
 
 
@@ -129,49 +140,49 @@ static NSString * characterMap = @" .,;_-`*";
 #pragma mark - Private
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    // タッチした座標を取得します。
+    // 터치한 좌표를 가져옴
     CGPoint currentPoint = [[touches anyObject] locationInView:self.canvas];
     
-    // パスを初期化します。
+    // Path 초기화
     bezierPath = [UIBezierPath bezierPath];
     bezierPath.lineCapStyle = kCGLineCapRound;
     bezierPath.lineWidth = 5.0;
     [bezierPath moveToPoint:currentPoint];
     firstMovedFlg = NO;
     
-    // タッチした座標を保持します。
+    // 터치한 좌표를 전역 변수에 저장
     lastTouchPoint = currentPoint;
 }
 
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    // タッチ開始時にパスを初期化していない場合は処理を終了します。
+    // Path가 초기화 완료되어 인스턴스화 되어 있지 않으면 이벤트 종료
     if (bezierPath == nil){
         return;
     }
     
-    // タッチした座標を取得します。
+    // 터치한 좌표를 가져옴
     CGPoint currentPoint = [[touches anyObject] locationInView:self.canvas];
     
-    // 最初の移動はスキップします。
+    // 최초 이동일 경우, 스킵함
     if (!firstMovedFlg){
         firstMovedFlg = YES;
         lastTouchPoint = currentPoint;
         return;
     }
     
-    // 中点の座標を取得します。
+    // 중심점의 좌표를 가져옴
     CGPoint middlePoint = CGPointMake((lastTouchPoint.x + currentPoint.x) / 2,
                                       (lastTouchPoint.y + currentPoint.y) / 2);
     
-    // パスにポイントを追加します。
+    // Path에 중심점과 마지막 터치 좌표를 추가함.
     [bezierPath addQuadCurveToPoint:middlePoint controlPoint:lastTouchPoint];
     
-    // 線を描画します。
+    // 선 그림
     [self drawLine:bezierPath];
     
-    // タッチした座標を保持します。
+    // 터치한 좌표를 전역 변수에 저장
     lastTouchPoint = currentPoint;
     
     NSLog(@"bezierPath is %@",  NSStringFromCGRect(CGPathGetBoundingBox(bezierPath.CGPath)));
@@ -180,53 +191,53 @@ static NSString * characterMap = @" .,;_-`*";
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    // タッチ開始時にパスを初期化していない場合は処理を終了します。
+    // Path가 초기화 완료되어 인스턴스화 되어 있지 않으면 이벤트 종료
     if (bezierPath == nil){
         return;
     }
     
-    // タッチした座標を取得します。
+    // 터치한 좌표를 가져옴
     CGPoint currentPoint = [[touches anyObject] locationInView:self.canvas];
     
-    // パスにポイントを追加します。
+    // Path에 좌표를 추가함
     [bezierPath addQuadCurveToPoint:currentPoint controlPoint:lastTouchPoint];
     
     
     
-    // 線を描画します。
+    // 선을 그림
     [self drawLine:bezierPath];
     
-    // 今回描画した画像を保持します。
+    // 이번에 그린 이미지를 저장함.
     lastDrawImage = self.canvas.image;
     
-    // undo用にパスを保持して、redoスタックをクリアします。
+    // undo용 Path를 저장하고, redo 스택은 클리어함.
     [undoStack addObject:bezierPath];
     [redoStack removeAllObjects];
     bezierPath = nil;
     
-    // ボタンのenabledを設定します。
+    // 버튼을 사용가능하게 함.
     self.undoBtn.enabled = YES;
     self.redoBtn.enabled = NO;
 }
 
 - (void)drawLine:(UIBezierPath*)path
 {
-    // 非表示の描画領域を生成します。
+    // 이미지가 그려질 영역을 생성함
     UIGraphicsBeginImageContextWithOptions(self.canvas.frame.size, NO, 0.0);
     
-    // 描画領域に、前回までに描画した画像を、描画します。
+    // 이미지 영역에 기존에 그린 이미지가 있다면 화면에 그림.
     [lastDrawImage drawAtPoint:CGPointZero];
     
-    // 色をセットします。
+    // 색 지정
     [[UIColor redColor] setStroke];
     
-    // 線を引きます。
+    // 선을 그림
     [path stroke];
     
-    // 描画した画像をcanvasにセットして、画面に表示します。
+    // 그린 이미지를 canvas 에 세팅하고 화면에 표시함.
     self.canvas.image = UIGraphicsGetImageFromCurrentImageContext();
     
-    // 描画を終了します。
+    // 그리기 종료
     UIGraphicsEndImageContext();
 }
 
